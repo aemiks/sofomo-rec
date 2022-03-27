@@ -1,0 +1,1 @@
+web: gunicorn sofomo.wsgi --log-file -

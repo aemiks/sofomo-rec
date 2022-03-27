@@ -12,7 +12,7 @@ router.register(r'api/geolocations', GeolocationDataViewSet, basename='geolocati
 urlpatterns = [
     path('api/token/', jwt_views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('api/get_user_geolocation_data', GetUserGeolocationData.as_view(), name='get_user_geolocation_data'),
+    path('api/get_user_geolocation_data/', GetUserGeolocationData.as_view(), name='get_user_geolocation_data'),
     path('', include(router.urls)),
 ]
 

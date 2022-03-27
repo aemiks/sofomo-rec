@@ -9,7 +9,7 @@ This is an API that requires JWT authentication. The application is able to stor
 geolocation data in a database based on the IP address(data retrieved using ipstack.com). The IP address can be provided
 via the POST method or retrieved from the user at a specific endpoint.  
 
-API is avaiable online:  [SimpleJWT](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/index.html)
+API is avaiable online:  [https://sofomo-rec.herokuapp.com/](https://sofomo-rec.herokuapp.com/)
 
 ```
 to test API online authorization values: 

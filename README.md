@@ -1,9 +1,3 @@
-'api/token/', 
-'api/token/refresh/'
-'api/get_user_geolocation_data'
-'api/geolocations'   
-
-
 ## Sofomo-rec
 This is an API that requires JWT authentication. The application is able to store 
 geolocation data in a database based on the IP address(data retrieved using ipstack.com). The IP address can be provided

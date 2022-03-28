@@ -6,6 +6,7 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework import status
 from api.serializers import GeolocationDataSerializer
+from django.db import DatabaseError
 
 def ip_curl(ip):
     """
@@ -100,14 +101,17 @@ class GetUserGeolocationData(APIView):
 
 class GeolocationDataViewSet(ModelViewSet):
     serializer_class = GeolocationDataSerializer
-    # queryset = GeolocationData.objects.all()
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
         """
         Filter queryset - You can only see your geolocation data
         """
-        return self.request.user.geolocation.all()
+        try:
+            return self.request.user.geolocation.all()
+        except DatabaseError:
+            return Response({'message': 'database error - contact with site admin'}, status=status.HTTP_400_BAD_REQUEST)
+
 
     def create(self, request, *args, **kwargs):
         """

@@ -134,7 +134,8 @@ class GeolocationDataViewSet(ModelViewSet):
                 rawData = ip_curl(ip)
                 is_own = False
                 create_geolocation_object(self.request.user, rawData, is_own)
-                return Response({'message':'Ip address correct - sucessful added Geolocation Data'}, status=status.HTTP_201_CREATED)
+                return Response({'message':f'Ip address {ip} is correct - sucessful added Geolocation Data'},
+                                status=status.HTTP_201_CREATED)
 
         return Response({'message': 'something went wrong - serializer not valid'}, status=status.HTTP_400_BAD_REQUEST)
 

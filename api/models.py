@@ -16,7 +16,7 @@ class GeolocationData(models.Model):
     latitude = models.FloatField(max_length=50, null=True, blank=True)
     longitude = models.FloatField(max_length=50, null=True, blank=True)
 
-    # is_own parametr to distinguish between foreign queries and your own
+    # is_own parameter to distinguish between foreign queries and your own
     is_own = models.BooleanField(default=False)
 
     def __str__(self):

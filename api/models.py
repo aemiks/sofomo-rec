@@ -3,6 +3,9 @@ from django.conf import settings
 
 
 class GeolocationData(models.Model):
+    """
+    Model to catch selected data from ipstack.com
+    """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="geolocation")
     ip = models.CharField(max_length=50)
     continent_code = models.CharField(max_length=3)

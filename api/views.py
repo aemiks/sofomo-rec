@@ -9,8 +9,7 @@ from api.serializers import GeolocationDataSerializer
 from django.db import DatabaseError
 
 def ip_curl(ip):
-    """
-    Function to colect ip geolocation data from ipstack.com
+    """Function to colect ip geolocation data from ipstack.com
     and return json file
     """
     try:
@@ -25,8 +24,7 @@ def ip_curl(ip):
     return rawData
 
 def create_geolocation_object(user, rawData, is_own):
-    """
-    Function to add an object to the GeolocationData model, needs:
+    """Function to add an object to the GeolocationData model, needs:
         user
         raw_data(json file from ipstack.com)
         is_own(responsible for indicating if ip is own or foreign)
@@ -66,8 +64,7 @@ def create_geolocation_object(user, rawData, is_own):
 
 
 class GetUserGeolocationData(APIView):
-    """
-    APIView to get User own ip geolocation data,
+    """APIView to get User own ip geolocation data,
         If the user does not know his ip address,
         it will be automatically collected and
         GeolocationData object added to the database
@@ -104,8 +101,7 @@ class GeolocationDataViewSet(ModelViewSet):
     permission_classes = (IsAuthenticated,)
 
     def get_queryset(self):
-        """
-        Filter queryset - You can only see your geolocation data
+        """Filter queryset - You can only see your geolocation data
         """
         try:
             return self.request.user.geolocation.all()
@@ -114,8 +110,7 @@ class GeolocationDataViewSet(ModelViewSet):
 
 
     def create(self, request, *args, **kwargs):
-        """
-        Function that adds a new object based on ip address and checks if ip geolocation data is already in the db
+        """Function that adds a new object based on ip address and checks if ip geolocation data is already in the db
         """
         serializer = self.get_serializer(data=request.data)
 
@@ -140,8 +135,7 @@ class GeolocationDataViewSet(ModelViewSet):
         return Response({'message': 'something went wrong - serializer not valid'}, status=status.HTTP_400_BAD_REQUEST)
 
     def destroy(self, request, *args, **kwargs):
-        """
-        Function destroy selected object
+        """Function destroy selected object
         """
         geolocation_data = self.get_object()
         geolocation_data.delete()
